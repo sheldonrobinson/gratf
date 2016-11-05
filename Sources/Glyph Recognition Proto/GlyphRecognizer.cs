@@ -10,11 +10,11 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Text;
 
-using AForge;
-using AForge.Math;
-using AForge.Math.Geometry;
-using AForge.Imaging;
-using AForge.Imaging.Filters;
+using Accord;
+using Accord.Math;
+using Accord.Math.Geometry;
+using Accord.Imaging;
+using Accord.Imaging.Filters;
 using AForge.Imaging.IPPrototyper;
 
 namespace GlyphRecognitionProto
@@ -57,7 +57,7 @@ namespace GlyphRecognitionProto
             Blob[] blobs = blobCounter.GetObjectsInformation( );
 
             // create copy of source image, so we could draw on it
-            Bitmap imageCopy = AForge.Imaging.Image.Clone( image );
+            Bitmap imageCopy = Accord.Imaging.Image.Clone( image );
 
             BitmapData imageData = imageCopy.LockBits( new Rectangle( 0, 0, image.Width, image.Height ),
                 ImageLockMode.ReadWrite, imageCopy.PixelFormat );

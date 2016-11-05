@@ -12,7 +12,7 @@ using System.IO;
 using System.Xml;
 using System.Drawing;
 
-using AForge.Vision.GlyphRecognition;
+using Accord.Vision.GlyphRecognition;
 
 namespace GlyphRecognitionStudio
 {

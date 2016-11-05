@@ -17,12 +17,12 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
 
-using AForge.Math;
-using AForge.Video;
-using AForge.Video.DirectShow;
-using AForge.Vision.GlyphRecognition;
-using AForge.Imaging;
-using AForge.Imaging.Filters;
+using Accord.Math;
+using Accord.Video;
+using Accord.Video.DirectShow;
+using Accord.Vision.GlyphRecognition;
+using Accord.Imaging;
+using Accord.Imaging.Filters;
 
 using Xna3DViewer;
 

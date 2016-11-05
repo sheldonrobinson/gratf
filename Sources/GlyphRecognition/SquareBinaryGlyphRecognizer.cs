@@ -5,14 +5,14 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
     using System.Drawing;
     using System.Drawing.Imaging;
 
-    using AForge;
-    using AForge.Imaging;
+    using Accord;
+    using Accord.Imaging;
 
     /// <summary>
     /// Recognition of square glyphs in binary images.
@@ -36,6 +36,7 @@ namespace AForge.Vision.GlyphRecognition
         ///
         public int GlyphSize
         {
+
             get { return glyphSize; }
             set { glyphSize = System.Math.Max( 5, System.Math.Min( 23, value ) ); }
         }

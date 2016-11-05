@@ -5,11 +5,12 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
     using System.Collections;
-    using System.Collections.Generic;
+    using SCG = System.Collections.Generic;
+    using C5;
     using System.Collections.ObjectModel;
 
     /// <summary>
@@ -19,9 +20,9 @@ namespace AForge.Vision.GlyphRecognition
     /// <remarks><para>The class represents collection of glyphs, which cab be recognized with the help of
     /// <see cref="GlyphRecognizer"/>.</para></remarks>
     /// 
-    public class GlyphDatabase : IEnumerable<Glyph>
+    public class GlyphDatabase : SCG.IEnumerable<Glyph>
     {
-        private Dictionary<string, Glyph> glyphs = new Dictionary<string,Glyph>( );
+        private SCG.Dictionary<string, Glyph> glyphs = new SCG.Dictionary<string,Glyph>( );
 
         // size of glyphs in the database
         private int size;
@@ -32,9 +33,9 @@ namespace AForge.Vision.GlyphRecognition
         /// 
         /// <returns>Returns glyph's enumerator.</returns>
         /// 
-        public IEnumerator<Glyph> GetEnumerator( )
+        public SCG.IEnumerator<Glyph> GetEnumerator( )
         {
-            foreach ( KeyValuePair<string, Glyph> pair in glyphs )
+            foreach (SCG.KeyValuePair<string, Glyph> pair in glyphs )
             {
                 yield return pair.Value;
             }
@@ -184,7 +185,7 @@ namespace AForge.Vision.GlyphRecognition
         /// 
         public ReadOnlyCollection<string> GetGlyphNames( )
         {
-            return new ReadOnlyCollection<string>( new List<string>( glyphs.Keys ) );
+            return new ReadOnlyCollection<string>( new SCG.List<string>( glyphs.Keys ) );
         }
 
         /// <summary>
@@ -204,7 +205,7 @@ namespace AForge.Vision.GlyphRecognition
         /// 
         public Glyph RecognizeGlyph( byte[,] rawGlyphData, out int rotation )
         {
-            foreach ( KeyValuePair<string, Glyph> pair in glyphs )
+            foreach (SCG.KeyValuePair<string, Glyph> pair in glyphs )
             {
                 if ( ( rotation = pair.Value.CheckForMatching( rawGlyphData ) ) != -1 )
                     return pair.Value;

@@ -27,7 +27,7 @@ namespace Xna3DViewer
     /// </summary>
     internal class GraphicsDeviceService : IGraphicsDeviceService
     {
-        GraphicsDevice graphicsDevice;
+        Microsoft.Xna.Framework.Graphics.GraphicsDevice graphicsDevice;
 
         // Singleton device service instance.
         static GraphicsDeviceService singletonInstance;
@@ -35,7 +35,7 @@ namespace Xna3DViewer
         static int referenceCount;
 
         // Store the current device settings.
-        PresentationParameters parameters;
+        Microsoft.Xna.Framework.Graphics.PresentationParameters parameters;
 
         // IGraphicsDeviceService events.
         public event EventHandler<EventArgs> DeviceCreated;
@@ -114,10 +114,12 @@ namespace Xna3DViewer
             if ( DeviceResetting != null )
                 DeviceResetting( this, EventArgs.Empty );
 
-            parameters.BackBufferWidth = Math.Max( parameters.BackBufferWidth, width );
-            parameters.BackBufferHeight = Math.Max( parameters.BackBufferHeight, height );
+            //parameters.BackBufferWidth = Math.Max( parameters.BackBufferWidth, width );
+            //parameters.BackBufferHeight = Math.Max( parameters.BackBufferHeight, height );
 
-            graphicsDevice.Reset( parameters );
+            graphicsDevice.PresentationParameters.BackBufferWidth = Math.Max(parameters.BackBufferWidth, width);
+            graphicsDevice.PresentationParameters.BackBufferHeight = Math.Max(parameters.BackBufferHeight, height);
+            //graphicsDevice.Reset( parameters );
 
             if ( DeviceReset != null )
                 DeviceReset( this, EventArgs.Empty );

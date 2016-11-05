@@ -5,7 +5,7 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
 
@@ -16,15 +16,16 @@ namespace AForge.Vision.GlyphRecognition
     {
         private string name;
         private byte[,] data;
-        private object userData;
+        //private object userData;
 
         /// <summary>
         /// Glyph's name.
         /// </summary>
         public string Name
         {
-            get { return name; }
-            set { name = value; }
+            get; set;
+            //get { return name; }
+            //set { name = value; }
         }
 
         /// <summary>
@@ -76,8 +77,9 @@ namespace AForge.Vision.GlyphRecognition
         /// 
         public object UserData
         {
-            get { return userData; }
-            set { userData = value; }
+            get; set;
+            //get { return userData; }
+            //set { userData = value; }
         }
 
         /// <summary>
@@ -121,8 +123,10 @@ namespace AForge.Vision.GlyphRecognition
         public object Clone( )
         {
             Glyph clone = new Glyph( name, (byte[,]) data.Clone( ) );
-
-            clone.userData = userData;
+            if (UserData != null)
+            {
+                clone.UserData = UserData;
+            }
 
             return clone;
         }

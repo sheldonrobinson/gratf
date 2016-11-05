@@ -10,11 +10,11 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 
-using AForge;
-using AForge.Math.Geometry;
-using AForge.Imaging;
-using AForge.Imaging.Filters;
-using AForge.Vision.GlyphRecognition;
+using Accord;
+using Accord.Math.Geometry;
+using Accord.Imaging;
+using Accord.Imaging.Filters;
+using Accord.Vision.GlyphRecognition;
 
 namespace GlyphRecognitionStudio
 {

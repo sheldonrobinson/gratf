@@ -1,6 +1,8 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual C# Express 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Glyph Recognition Studio", "Glyph Recognition Studio.csproj", "{21240C95-B224-474A-92F1-71EFBA49606D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlyphRecognition", "..\GlyphRecognition\GlyphRecognition.csproj", "{0998FAFD-4C8F-4C04-A5CC-03B856C804AD}"
@@ -23,10 +25,10 @@ Global
 		{0998FAFD-4C8F-4C04-A5CC-03B856C804AD}.Debug|x86.Build.0 = Debug|x86
 		{0998FAFD-4C8F-4C04-A5CC-03B856C804AD}.Release|x86.ActiveCfg = Release|x86
 		{0998FAFD-4C8F-4C04-A5CC-03B856C804AD}.Release|x86.Build.0 = Release|x86
-		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Debug|x86.ActiveCfg = Debug|x86
-		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Debug|x86.Build.0 = Debug|x86
-		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Release|x86.ActiveCfg = Release|x86
-		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Release|x86.Build.0 = Release|x86
+		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Debug|x86.Build.0 = Debug|Any CPU
+		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Release|x86.ActiveCfg = Release|Any CPU
+		{282759F8-B913-412E-8B2F-3B6A2A84AB53}.Release|x86.Build.0 = Release|Any CPU
 		{CB802E38-273A-4551-8116-1ECE0D37917D}.Debug|x86.ActiveCfg = Debug|x86
 		{CB802E38-273A-4551-8116-1ECE0D37917D}.Release|x86.ActiveCfg = Release|x86
 		{CB802E38-273A-4551-8116-1ECE0D37917D}.Release|x86.Build.0 = Release|x86

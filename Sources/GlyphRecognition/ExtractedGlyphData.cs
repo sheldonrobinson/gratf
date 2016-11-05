@@ -5,14 +5,15 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
-    using System.Collections.Generic;
+    using SCG = System.Collections.Generic;
+    using C5;
     using System.Text;
 
-    using AForge;
-    using AForge.Math;
+    using Accord;
+    using Accord.Math;
 
     /// <summary>
     /// Information about the glyph extracted from an image using <see cref="GlyphRecognizer"/>.
@@ -23,7 +24,7 @@ namespace AForge.Vision.GlyphRecognition
         /// Quadrilateral of the raw glyph detected (see <see cref="RawData"/>). First point
         /// of this quadrilateral corresponds to upper-left point of the raw glyph data.
         /// </summary>
-        public readonly List<IntPoint> Quadrilateral;
+        public readonly SCG.List<IntPoint> Quadrilateral;
 
         /// <summary>
         /// Raw glyph data extacted from processed image.
@@ -54,10 +55,11 @@ namespace AForge.Vision.GlyphRecognition
         ///
         public Glyph RecognizedGlyph
         {
-            get { return recognizedGlyph; }
-            internal set { recognizedGlyph = value; }
+            get; internal set;
+            //get { return recognizedGlyph; }
+            //internal set { recognizedGlyph = value; }
         }
-        private Glyph recognizedGlyph;
+        //private Glyph recognizedGlyph;
 
         /// <summary>
         /// Quadrilateral area corresponding to the <see cref="RecognizedGlyph"/>.
@@ -74,12 +76,13 @@ namespace AForge.Vision.GlyphRecognition
         /// it is set to <see langword="null"/>.</para>
         /// </remarks>
         /// 
-        public List<IntPoint> RecognizedQuadrilateral
+        public SCG.List<IntPoint> RecognizedQuadrilateral
         {
-            get { return recognizedQuadrilateral; }
-            internal set { recognizedQuadrilateral = value; }
+            get; internal set;
+            //get { return recognizedQuadrilateral; }
+            //internal set { recognizedQuadrilateral = value; }
         }
-        private List<IntPoint> recognizedQuadrilateral;
+        //private SCG.List<IntPoint> recognizedQuadrilateral;
 
         /// <summary>
         /// Glyphs transformation matrix.
@@ -91,10 +94,11 @@ namespace AForge.Vision.GlyphRecognition
         /// 
         public Matrix4x4 TransformationMatrix
         {
-            get { return transformationMatrix; }
-            internal set { transformationMatrix = value; }
+            get; internal set;
+            //get { return transformationMatrix; }
+            //internal set { transformationMatrix = value; }
         }
-        private Matrix4x4 transformationMatrix;
+        //private Matrix4x4 transformationMatrix;
 
         /// <summary>
         /// Check if glyph pose was estimated or not.
@@ -105,10 +109,11 @@ namespace AForge.Vision.GlyphRecognition
         ///
         public bool IsTransformationDetected
         {
-            get { return isTransformationDetected; }
-            internal set { isTransformationDetected = value; }
+            get; internal set;
+            //get { return isTransformationDetected; }
+            //internal set { isTransformationDetected = value; }
         }
-        private bool isTransformationDetected = false;
+        //private bool isTransformationDetected = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ExtractedGlyphData"/> class.
@@ -118,11 +123,12 @@ namespace AForge.Vision.GlyphRecognition
         /// <param name="rawData">Raw glyph data extacted from processed image.</param>
         /// <param name="confidence">Confidence level of <paramref name="rawData"/> recognition.</param>
         /// 
-        public ExtractedGlyphData( List<IntPoint> quadrilateral, byte[,] rawData, float confidence )
+        public ExtractedGlyphData(SCG.List<IntPoint> quadrilateral, byte[,] rawData, float confidence )
         {
             Quadrilateral = quadrilateral;
             RawData = rawData;
             Confidence = confidence;
+            IsTransformationDetected = false;
         }
 
         /// <summary>
@@ -134,15 +140,15 @@ namespace AForge.Vision.GlyphRecognition
         public object Clone( )
         {
             ExtractedGlyphData clone = new ExtractedGlyphData(
-                new List<IntPoint>( Quadrilateral ), (byte[,]) RawData.Clone( ), Confidence );
+                new SCG.List<Accord.IntPoint>( Quadrilateral ), (byte[,]) RawData.Clone( ), Confidence );
 
-            if ( recognizedGlyph != null )
+            if ( RecognizedGlyph != null )
             {
-                clone.RecognizedGlyph = (Glyph) recognizedGlyph.Clone( );
+                clone.RecognizedGlyph = (Glyph) RecognizedGlyph.Clone( );
             }
-            if ( recognizedQuadrilateral != null )
+            if ( RecognizedQuadrilateral != null )
             {
-                clone.RecognizedQuadrilateral = new List<IntPoint>( recognizedQuadrilateral );
+                clone.RecognizedQuadrilateral = new SCG.List<Accord.IntPoint>(RecognizedQuadrilateral);
             }
 
             return clone;

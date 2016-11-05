@@ -13,7 +13,7 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 
-using AForge.Vision.GlyphRecognition;
+using Accord.Vision.GlyphRecognition;
 using Xna3DViewer;
 
 namespace GlyphRecognitionStudio

@@ -7,7 +7,7 @@
 
 using System;
 using System.Collections.Generic;
-using AForge.Math;
+using Accord.Math;
 
 namespace Xna3DViewer
 {

@@ -5,14 +5,15 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
-    using System.Collections.Generic;
+    using SCG = System.Collections.Generic;
+    using C5;
 
-    using AForge.Math;
-    using AForge.Math.Geometry;
-    using AForge.Imaging;
+    using Accord.Math;
+    using Accord.Math.Geometry;
+    using Accord.Imaging;
 
     /// <summary>
     /// Glyph tracker.
@@ -28,8 +29,8 @@ namespace AForge.Vision.GlyphRecognition
     public class GlyphTracker
     {
         private int counter = 1;
-        private Dictionary<int, TrackedGlyph> trackedGlyphs = new Dictionary<int, TrackedGlyph>( );
-        private Dictionary<int, Matrix3x3> prevRotation = new Dictionary<int, Matrix3x3>( );
+        private SCG.Dictionary<int, TrackedGlyph> trackedGlyphs = new SCG.Dictionary<int, TrackedGlyph>( );
+        private SCG.Dictionary<int, Matrix3x3> prevRotation = new SCG.Dictionary<int, Matrix3x3>( );
 
         // TODO: age constants should be changed to time, not number of frames
         private const int MaxGlyphAge = 30;
@@ -179,12 +180,12 @@ namespace AForge.Vision.GlyphRecognition
         /// or does not move smoothly.</para>
         /// </remarks>
         /// 
-        public List<int> TrackGlyphs( List<ExtractedGlyphData> glyphs )
+        public SCG.List<int> TrackGlyphs(SCG.List<ExtractedGlyphData> glyphs )
         {
             // process previously tracked glyphs
             IncreaseHistoryAge( );
 
-            List<int> glyphIDs = new List<int>( );
+            SCG.List<int> glyphIDs = new SCG.List<int>( );
 
             // get ID of each found glyph
             foreach ( ExtractedGlyphData glyph in glyphs )
@@ -306,7 +307,7 @@ namespace AForge.Vision.GlyphRecognition
 
         // Check if difference between glyphs corners' coordinates is significant (more
         // than caused by noise)
-        private static bool IsCoordinatesDifferenceSignificant( List<IntPoint> points1, List<IntPoint> points2 )
+        private static bool IsCoordinatesDifferenceSignificant(SCG.List<IntPoint> points1, SCG.List<IntPoint> points2 )
         {
             int significantDifferences = 0;
 
@@ -388,7 +389,7 @@ namespace AForge.Vision.GlyphRecognition
         // Increase age of tracked glyph and remove old ones
         private void IncreaseHistoryAge( )
         {
-            List<int> keys = new List<int>( trackedGlyphs.Keys );
+            SCG.List<int> keys = new SCG.List<int>( trackedGlyphs.Keys );
 
             for ( int i = 0; i < keys.Count; i++ )
             {
@@ -422,7 +423,7 @@ namespace AForge.Vision.GlyphRecognition
             public int Age = 0;
             public Point Position;
 
-            private readonly List<Point> motionHistory = new List<Point>( );
+            private readonly SCG.List<Point> motionHistory = new SCG.List<Point>( );
             public double RecentPathLength = 0;
             public double AverageRecentMotion = 0;
 
@@ -433,7 +434,7 @@ namespace AForge.Vision.GlyphRecognition
                 Position = position;
             }
 
-            public void AddMotionHistory( Point position )
+            public void AddMotionHistory(Point position )
             {
                 motionHistory.Add( position );
 

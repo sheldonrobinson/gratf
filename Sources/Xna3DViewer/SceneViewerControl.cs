@@ -12,7 +12,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 
-using AForge.Math;
+using Accord.Math;
 
 namespace Xna3DViewer
 {
@@ -94,12 +94,12 @@ namespace Xna3DViewer
                 if ( modelsToDisplay.Count != 0 )
                 {
                     // create camera view matrix
-                    Matrix viewMatrix = Matrix.CreateLookAt(
+                    Microsoft.Xna.Framework.Matrix viewMatrix = Microsoft.Xna.Framework.Matrix.CreateLookAt(
                         new Microsoft.Xna.Framework.Vector3( 0, 0, 3 ),
                             Microsoft.Xna.Framework.Vector3.Zero,
                             Microsoft.Xna.Framework.Vector3.Up );
                     // create projection matrix
-                    Matrix projectionMatrix = Matrix.CreatePerspective(
+                    Microsoft.Xna.Framework.Matrix projectionMatrix = Microsoft.Xna.Framework.Matrix.CreatePerspective(
                         1, 1 / GraphicsDevice.Viewport.AspectRatio, 1f, 10000 );
 
                     // display all models
@@ -122,17 +122,17 @@ namespace Xna3DViewer
                             float yaw, pitch, roll;
                             modelTransformaton.ExtractYawPitchRoll( out yaw, out pitch, out roll );
                             // create XNA's rotation matrix
-                            Matrix rotation = Matrix.CreateFromYawPitchRoll( -yaw, -pitch, roll );
+                            Microsoft.Xna.Framework.Matrix rotation = Microsoft.Xna.Framework.Matrix.CreateFromYawPitchRoll( -yaw, -pitch, roll );
                             // create XNA's translation matrix
-                            Matrix translation = Matrix.CreateTranslation(
+                            Microsoft.Xna.Framework.Matrix translation = Microsoft.Xna.Framework.Matrix.CreateTranslation(
                                 modelTransformaton.V03, modelTransformaton.V13, -modelTransformaton.V23 );
 
                             // retrieve transformation matrices for all meshes of the model
-                            Matrix[] transforms = new Matrix[model.Bones.Count];
+                            Microsoft.Xna.Framework.Matrix[] transforms = new Microsoft.Xna.Framework.Matrix[model.Bones.Count];
                             model.CopyAbsoluteBoneTransformsTo( transforms );
 
                             // create scaling matrix, so model fits its glyph
-                            Matrix scaling = Matrix.CreateScale( virtualModel.Size );
+                            Microsoft.Xna.Framework.Matrix scaling = Microsoft.Xna.Framework.Matrix.CreateScale( virtualModel.Size );
 
                             // display all meshes of the model
                             // (note: the code will fine only for model with single mesh so far)
@@ -140,9 +140,9 @@ namespace Xna3DViewer
                             // (for calculation of model's radius, not just mesh radius)
                             foreach ( ModelMesh mesh in model.Meshes )
                             {
-                                Matrix world = 
+                                Microsoft.Xna.Framework.Matrix world = 
                                     transforms[mesh.ParentBone.Index] *
-                                    Matrix.CreateScale( 1 / mesh.BoundingSphere.Radius ) *
+                                    Microsoft.Xna.Framework.Matrix.CreateScale( 1 / mesh.BoundingSphere.Radius ) *
                                     scaling * rotation * translation;
 
                                 // set matrices for all effects

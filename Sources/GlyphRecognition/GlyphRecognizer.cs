@@ -5,17 +5,18 @@
 // andrew.kirillov@aforgenet.com
 //
 
-namespace AForge.Vision.GlyphRecognition
+namespace Accord.Vision.GlyphRecognition
 {
     using System;
-    using System.Collections.Generic;
+    using SCG = System.Collections.Generic;
+    using C5;
     using System.Drawing;
     using System.Drawing.Imaging;
 
-    using AForge;
-    using AForge.Imaging;
-    using AForge.Imaging.Filters;
-    using AForge.Math.Geometry;
+    using Accord;
+    using Accord.Imaging;
+    using Accord.Imaging.Filters;
+    using Accord.Math.Geometry;
 
     /// <summary>
     /// The class locates and recognizes glyphs in a specified image.
@@ -191,7 +192,7 @@ namespace AForge.Vision.GlyphRecognition
         /// <exception cref="UnsupportedImageFormatException">Pixel format of the specified image is not supported.
         /// It must be 8 bpp indexed or 24/32 bpp color image.</exception>
         ///
-        public List<ExtractedGlyphData> FindGlyphs( Bitmap image )
+        public SCG.List<ExtractedGlyphData> FindGlyphs( Bitmap image )
         {
             BitmapData bitmapData = image.LockBits( new Rectangle( 0, 0, image.Width, image.Height ),
                 ImageLockMode.ReadOnly, image.PixelFormat );
@@ -224,9 +225,9 @@ namespace AForge.Vision.GlyphRecognition
         /// <exception cref="UnsupportedImageFormatException">Pixel format of the specified image is not supported.
         /// It must be 8 bpp indexed or 24/32 bpp color image.</exception>
         /// 
-        public List<ExtractedGlyphData> FindGlyphs( UnmanagedImage image )
+        public SCG.List<ExtractedGlyphData> FindGlyphs( UnmanagedImage image )
         {
-            List<ExtractedGlyphData> extractedGlyphs = new List<ExtractedGlyphData>( );
+            SCG.List<ExtractedGlyphData> extractedGlyphs = new SCG.List<ExtractedGlyphData>( );
 
             if ( ( image.PixelFormat != PixelFormat.Format8bppIndexed ) &&
                  ( !Grayscale.CommonAlgorithms.BT709.FormatTranslations.ContainsKey( image.PixelFormat ) ) )
@@ -260,14 +261,14 @@ namespace AForge.Vision.GlyphRecognition
             // 5 - check each blob
             for ( int i = 0, n = blobs.Length; i < n; i++ )
             {
-                List<IntPoint> edgePoints = blobCounter.GetBlobsEdgePoints( blobs[i] );
-                List<IntPoint> corners = null;
+                SCG.List<IntPoint> edgePoints = blobCounter.GetBlobsEdgePoints( blobs[i] );
+                SCG.List<IntPoint> corners = null;
 
                 // does it look like a quadrilateral ?
                 if ( shapeChecker.IsQuadrilateral( edgePoints, out corners ) )
                 {
                     // get edge points on the left and on the right side
-                    List<IntPoint> leftEdgePoints, rightEdgePoints;
+                    SCG.List<IntPoint> leftEdgePoints, rightEdgePoints;
                     blobCounter.GetBlobsLeftAndRightEdges( blobs[i], out leftEdgePoints, out rightEdgePoints );
 
                     // calculate average difference between pixel values from outside of the shape and from inside
@@ -304,7 +305,7 @@ namespace AForge.Vision.GlyphRecognition
 
         #region Helper methods
         // Try recognizing the glyph in the specified image defined by the specified quadrilateral
-        private ExtractedGlyphData RecognizeGlyph( UnmanagedImage image, List<IntPoint> quadrilateral )
+        private ExtractedGlyphData RecognizeGlyph( UnmanagedImage image, SCG.List<IntPoint> quadrilateral )
         {
             // extract glyph image
             quadrilateralTransformation.SourceQuadrilateral = quadrilateral;
@@ -357,14 +358,14 @@ namespace AForge.Vision.GlyphRecognition
 
         // Calculate average brightness difference between pixels outside and inside of the object
         // bounded by specified left and right edge
-        private float CalculateAverageEdgesBrightnessDifference( List<IntPoint> leftEdgePoints,
-            List<IntPoint> rightEdgePoints, UnmanagedImage image )
+        private float CalculateAverageEdgesBrightnessDifference(SCG.List<IntPoint> leftEdgePoints,
+            SCG.List<IntPoint> rightEdgePoints, UnmanagedImage image )
         {
             // create list of points, which are a bit on the left/right from edges
-            List<IntPoint> leftEdgePoints1  = new List<IntPoint>( );
-            List<IntPoint> leftEdgePoints2  = new List<IntPoint>( );
-            List<IntPoint> rightEdgePoints1 = new List<IntPoint>( );
-            List<IntPoint> rightEdgePoints2 = new List<IntPoint>( );
+            SCG.List<IntPoint> leftEdgePoints1  = new SCG.List<IntPoint>( );
+            SCG.List<IntPoint> leftEdgePoints2  = new SCG.List<IntPoint>( );
+            SCG.List<IntPoint> rightEdgePoints1 = new SCG.List<IntPoint>( );
+            SCG.List<IntPoint> rightEdgePoints2 = new SCG.List<IntPoint>( );
 
             int tx1, tx2, ty;
             int widthM1 = image.Width - 1;

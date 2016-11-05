@@ -51,7 +51,7 @@
             this.restStatusLabel = new System.Windows.Forms.ToolStripStatusLabel( );
             this.mainPanel = new System.Windows.Forms.Panel( );
             this.splitContainer = new System.Windows.Forms.SplitContainer( );
-            this.videoSourcePlayer = new AForge.Controls.VideoSourcePlayer( );
+            this.videoSourcePlayer = new Accord.Controls.VideoSourcePlayer( );
             this.groupBox2 = new System.Windows.Forms.GroupBox( );
             this.glyphList = new System.Windows.Forms.ListView( );
             this.glyphCollectionContextMenu = new System.Windows.Forms.ContextMenuStrip( this.components );
@@ -68,8 +68,8 @@
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
             this.renameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem( );
-            this.videoSourcePlayer1 = new AForge.Controls.VideoSourcePlayer( );
-            this.videoSourcePlayer2 = new AForge.Controls.VideoSourcePlayer( );
+            this.videoSourcePlayer1 = new Accord.Controls.VideoSourcePlayer( );
+            this.videoSourcePlayer2 = new Accord.Controls.VideoSourcePlayer( );
             this.timer = new System.Windows.Forms.Timer( this.components );
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog( );
             this.toolTip = new System.Windows.Forms.ToolTip( this.components );
@@ -290,8 +290,8 @@
             this.videoSourcePlayer.Size = new System.Drawing.Size( 322, 242 );
             this.videoSourcePlayer.TabIndex = 0;
             this.videoSourcePlayer.VideoSource = null;
-            this.videoSourcePlayer.PlayingFinished += new AForge.Video.PlayingFinishedEventHandler( this.videoSourcePlayer_PlayingFinished );
-            this.videoSourcePlayer.NewFrame += new AForge.Controls.VideoSourcePlayer.NewFrameHandler( this.videoSourcePlayer_NewFrame );
+            this.videoSourcePlayer.PlayingFinished += new Accord.Video.PlayingFinishedEventHandler( this.videoSourcePlayer_PlayingFinished );
+            this.videoSourcePlayer.NewFrame += new Accord.Controls.VideoSourcePlayer.NewFrameHandler( this.videoSourcePlayer_NewFrame );
             // 
             // groupBox2
             // 
@@ -551,9 +551,9 @@
         private System.Windows.Forms.SplitContainer splitContainer;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer1;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer2;
-        private AForge.Controls.VideoSourcePlayer videoSourcePlayer;
+        private Accord.Controls.VideoSourcePlayer videoSourcePlayer1;
+        private Accord.Controls.VideoSourcePlayer videoSourcePlayer2;
+        private Accord.Controls.VideoSourcePlayer videoSourcePlayer;
         private System.Windows.Forms.ToolStripMenuItem localVideoCaptureDeviceToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openVideofileToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
